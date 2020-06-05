@@ -25,7 +25,7 @@ if(ENABLE_VCPKG_INTEGRATION AND DEFINED ENV{VCPKG_ROOT} AND NOT DEFINED CMAKE_TO
   message(STATUS "Using VCPKG integration")
 endif()
 
-project(Darknet VERSION ${Darknet_VERSION})
+project(detector VERSION ${Darknet_VERSION})
 
 if(WIN32 AND NOT DEFINED CMAKE_TOOLCHAIN_FILE)
   set(USE_INTEGRATED_LIBS "TRUE" CACHE BOOL "Use libs distributed with this repo")
@@ -457,6 +457,42 @@ install(EXPORT DarknetTargets
 
 # Export the package for use from the build-tree (this registers the build-tree with a global CMake-registry)
 export(PACKAGE Darknet)
+
+# ROS catkin
+find_package(catkin REQUIRED COMPONENTS
+  sensor_msgs
+  cv_bridge
+  image_transport
+  nodelet
+  roscpp
+  message_generation
+  message_runtime
+)
+
+add_message_files(
+  FILES
+  BBox.msg
+  DetectResult.msg
+)
+generate_messages(
+  DEPENDENCIES
+  std_msgs
+)
+
+catkin_package(
+  INCLUDE_DIRS include ${catkin_INCLUDE_DIRS}
+  LIBRARIES ${OpenCV_LIBS}
+  CATKIN_DEPENDS nodelet sensor_msgs cv_bridge image_transport
+)
+
+include_directories(
+  include
+  src
+  ${catkin_INCLUDE_DIRS}
+  ${OpenCV_INDLUDE_DIRS}
+)
+add_library(detect_nodelet ${CMAKE_CURRENT_LIST_DIR}/src/nodelet_detector.cpp)
+target_link_libraries(detect_nodelet dark ${catkin_LIBRARIES})
 
 # Create the DarknetConfig.cmake
 # First of all we compute the relative path between the cmake config file and the include path

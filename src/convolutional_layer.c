@@ -648,22 +648,22 @@ convolutional_layer make_convolutional_layer(int batch, int steps, int h, int w,
     //fprintf(stderr, "conv  %5d %2d x%2d /%2d  %4d x%4d x%4d   ->  %4d x%4d x%4d\n", n, size, size, stride, w, h, c, l.out_w, l.out_h, l.out_c);
     l.bflops = (2.0 * l.nweights * l.out_h*l.out_w) / 1000000000.;
     if (l.xnor) l.bflops = l.bflops / 32;
-    if (l.xnor && l.use_bin_output) fprintf(stderr, "convXB");
-    else if (l.xnor) fprintf(stderr, "convX ");
-    else if (l.share_layer) fprintf(stderr, "convS ");
-    else if (l.assisted_excitation) fprintf(stderr, "convAE");
-    else fprintf(stderr, "conv  ");
+    // if (l.xnor && l.use_bin_output) fprintf(stderr, "convXB");
+    // else if (l.xnor) fprintf(stderr, "convX ");
+    // else if (l.share_layer) fprintf(stderr, "convS ");
+    // else if (l.assisted_excitation) fprintf(stderr, "convAE");
+    // else fprintf(stderr, "conv  ");
 
-    if (groups > 1) fprintf(stderr, "%5d/%4d ", n, groups);
-    else           fprintf(stderr, "%5d      ", n);
+    // if (groups > 1) fprintf(stderr, "%5d/%4d ", n, groups);
+    // else           fprintf(stderr, "%5d      ", n);
 
-    if (stride_x != stride_y) fprintf(stderr, "%2dx%2d/%2dx%2d ", size, size, stride_x, stride_y);
-    else {
-        if (dilation > 1) fprintf(stderr, "%2d x%2d/%2d(%1d)", size, size, stride_x, dilation);
-        else             fprintf(stderr, "%2d x%2d/%2d   ", size, size, stride_x);
-    }
+    // if (stride_x != stride_y) fprintf(stderr, "%2dx%2d/%2dx%2d ", size, size, stride_x, stride_y);
+    // else {
+    //     if (dilation > 1) fprintf(stderr, "%2d x%2d/%2d(%1d)", size, size, stride_x, dilation);
+    //     else             fprintf(stderr, "%2d x%2d/%2d   ", size, size, stride_x);
+    // }
 
-    fprintf(stderr, "%4d x%4d x%4d -> %4d x%4d x%4d %5.3f BF\n", w, h, c, l.out_w, l.out_h, l.out_c, l.bflops);
+    // fprintf(stderr, "%4d x%4d x%4d -> %4d x%4d x%4d %5.3f BF\n", w, h, c, l.out_w, l.out_h, l.out_c, l.bflops);
 
     //fprintf(stderr, "%5d/%2d %2d x%2d /%2d(%d)%4d x%4d x%4d  -> %4d x%4d x%4d %5.3f BF\n", n, groups, size, size, stride, dilation, w, h, c, l.out_w, l.out_h, l.out_c, l.bflops);
 

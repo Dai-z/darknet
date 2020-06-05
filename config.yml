@@ -1,0 +1,13 @@
+detect:
+  # GPU numbers
+  num_gpus: 1
+  num_types: 1
+  # Network params for all camera types
+  cam_0:
+    # data file for darknet
+    data_file: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/coco.data"
+    # cfg file for darknet
+    cfg_file: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/yolov3-tiny.cfg"
+    test_cfg: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/yolov3-tiny.cfg"
+    test_weights: "/home/daiz/Repo/usv_ws/src/usv-detector/yolov3-tiny.weights"
+show_gui: false

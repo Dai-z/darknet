@@ -1,0 +1,7 @@
+<library path="lib/libdetect_nodelet">
+  <class name="libdetect_nodelet/DetectNodelet" type="detect_nodelet::DetectNodelet" base_class_type="nodelet::Nodelet">
+    <description>
+    This is nodelet for receiving images and detect.
+    </description>
+  </class>
+</library>

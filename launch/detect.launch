@@ -1,0 +1,19 @@
+<launch>
+    <node pkg="nodelet" type="nodelet" name="nodelet_manager"  args="manager"/>
+
+    <!-- Receiving videos from stream & publish to nodelet manager -->
+    <node pkg="nodelet" type="nodelet" name="cam_0"  args="load libav_nodelet/LibAVNodelet nodelet_manager" output="screen">
+        <!-- Set video stream address -->
+        <param name="addr" value="rtsp://127.0.0.1:8554/" />
+    </node>
+
+
+    <!-- Detect nodelet -->
+    <node pkg="nodelet"
+          type="nodelet"
+          name="detect"
+          args="load libdetect_nodelet/DetectNodelet nodelet_manager" output="screen">
+    </node>
+    <rosparam command="load" file="$(find detector)/config.yml"/>
+
+</launch>
