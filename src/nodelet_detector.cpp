@@ -76,7 +76,7 @@ class DetectNodelet : public nodelet::Nodelet {
     }
     if (show_gui_) {
       for (int i = 0; i < num_types_; i++)
-        cv::namedWindow("cam_" + std::to_string(i));
+        cv::namedWindow("cam_" + std::to_string(i), 0);
       cv::startWindowThread();
     }
   }
