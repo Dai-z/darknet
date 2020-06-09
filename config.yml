@@ -5,15 +5,15 @@ detect:
   # Network params for all camera types
   cam_0:
     # data file for darknet
+
     data_file: "/home/daiz/Data/demo715/demo.data"
     # cfg file for darknet
     test_cfg: "/home/daiz/Data/demo715/yolov3-tiny.cfg"
     test_weights: "/home/daiz/Data/demo715/yolov3-tiny/yolov3-tiny_last.weights"
 
-    # data_file: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/coco.data"
+    # data_file: "/home/daiz/Repo/darknet/cfg/coco.data"
     # # cfg file for darknet
-    # cfg_file: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/yolov3-tiny.cfg"
-    # test_cfg: "/home/daiz/Repo/usv_ws/src/usv-detector/cfg/yolov3-tiny.cfg"
-    # test_weights: "/home/daiz/Repo/usv_ws/src/usv-detector/yolov3-tiny.weights"
+    # test_cfg: "/home/daiz/Repo/darknet/cfg/yolov3-tiny.cfg"
+    # test_weights: "/home/daiz/Data/yolov3-tiny.weights"
 
 show_gui: true
